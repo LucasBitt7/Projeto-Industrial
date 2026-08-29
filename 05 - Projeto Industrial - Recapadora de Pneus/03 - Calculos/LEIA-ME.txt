@@ -1,0 +1,19 @@
+PASTA PARA OS CALCULOS DO PROJETO
+==================================
+
+Colocar aqui o memorial de calculo do projeto (conforme exigido nos
+"dados iniciais do projeto" e no plano de ensino - entregas T1, T2, T3 e T4):
+
+- Calculo de iluminancia (metodo dos lumens e metodo das cavidades)
+- Previsao de circuitos e cargas, calculo de demanda, FP e FD
+- Dimensionamento de condutores por ampacidade e analise termica
+- Dimensionamento por queda de tensao (trecho a trecho, formulacao completa)
+- Dimensionamento do neutro e do condutor de protecao
+- Balanceamento de cargas e fases
+- Dimensionamento de protecao (sobrecarga e curto-circuito)
+- Correcao e compensacao de energia reativa (capacitores)
+- Especificacao de motores e dimensionamento dos componentes das
+  chaves de partida (direta, estrela-triangulo, compensadora,
+  serie-paralela, soft-starter e inversor)
+- Calculo de curto-circuito (formulacao completa, 20kA no ponto de entrega)
+- Dimensionamento do gerador de emergencia

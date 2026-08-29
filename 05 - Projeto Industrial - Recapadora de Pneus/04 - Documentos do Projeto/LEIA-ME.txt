@@ -1,0 +1,16 @@
+PASTA PARA OS DOCUMENTOS DO PROJETO
+===================================
+
+Colocar aqui as entregas e documentos do projeto da recapadora de pneus
+(conforme "dados iniciais do projeto" e plano de ensino - T4):
+
+- Memorial descritivo
+- Plantas em CAD (DWG):
+  - Entrada de servico (norma Celesc/PEP, consulta previa)
+  - Diagramas unifilares
+  - Diagramas trifilares
+  - Diagrama sinotico de queda de tensao
+  - Alimentacao de cargas motrizes e resistivas
+  - Alimentacao de tomadas e iluminacao
+  - Detalhes (eletrocalhas, canaletas e outros)
+- Projeto completo das instalacoes eletricas industriais (entrega em ZIP via SIGAA)

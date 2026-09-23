@@ -1,0 +1,34 @@
+{
+  "template_id": "tpl_tom_monof_esc_01",
+  "name": "Tomada monofásica escritório",
+  "source_drawing": "/mnt/c/Users/lucas/Desktop/Engenharia/ProjetosIndustriais/T1/RECAPADORA DE PNEUS - 2026-2-JOÃO 17-09-2026.dxf",
+  "anchor": [
+    356.96754869673384,
+    80.49428336508743
+  ],
+  "handles": [
+    "BD6C"
+  ],
+  "relative_entities": [
+    {
+      "type": "INSERT",
+      "layer": "_COTAS",
+      "handle": "BD6C",
+      "block": "TOM_Monof_baixa",
+      "dx": -0.19954859718905027,
+      "dy": -4.263256414560601e-14,
+      "rotation": 0.0,
+      "attribs": {}
+    }
+  ],
+  "bbox": [
+    356.7680000995448,
+    80.35977119562536,
+    357.1670972939229,
+    80.6287955345495
+  ],
+  "expected_layers": [
+    "_COTAS"
+  ],
+  "semantic_type": "outlet"
+}

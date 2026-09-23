@@ -1,0 +1,33 @@
+{
+  "template_id": "dbg1",
+  "name": "t",
+  "source_drawing": "/tmp/pytest-of-lucas/pytest-14/test_dbg_mtext0/a.dxf",
+  "anchor": [
+    1.7250502344273275,
+    4.678667113194909
+  ],
+  "handles": [
+    "2F"
+  ],
+  "relative_entities": [
+    {
+      "type": "MTEXT",
+      "layer": "T",
+      "handle": "2F",
+      "dx": -0.7250502344273275,
+      "dy": 0.32133288680509065,
+      "content": "OLD",
+      "rotation": 0.0
+    }
+  ],
+  "bbox": [
+    1.0,
+    4.357334226389819,
+    2.450100468854655,
+    5.0
+  ],
+  "expected_layers": [
+    "T"
+  ],
+  "semantic_type": "GENERIC"
+}

@@ -1,0 +1,465 @@
+{
+  "template_id": "qdf1_skel",
+  "name": "QDF-1 skeleton",
+  "source_drawing": "/mnt/c/Users/lucas/Desktop/Engenharia/ProjetosIndustriais/T1-desenvolvimento/T1/RECAPADORA DE PNEUS - 2026-2-DANTE 08-09-2026 - V30 LUCAS-QDL567.dxf",
+  "anchor": [
+    543.4959261373236,
+    175.12156385274935
+  ],
+  "handles": [
+    "B40A",
+    "B40B",
+    "B40C",
+    "B40D",
+    "B40E",
+    "B410",
+    "B411",
+    "B412",
+    "B413",
+    "B414",
+    "B415",
+    "B416",
+    "B417",
+    "B418",
+    "B419",
+    "B41A",
+    "B41B",
+    "B432",
+    "B433",
+    "B434",
+    "B435",
+    "B588",
+    "B589",
+    "B743",
+    "B744",
+    "B8C3",
+    "B8C4",
+    "B8C5",
+    "B8C6",
+    "BA39",
+    "BA3A",
+    "BA3B",
+    "BA3C",
+    "BA3D"
+  ],
+  "relative_entities": [
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B40A",
+      "p1": [
+        -11.32766731963568,
+        2.9145678142146494
+      ],
+      "p2": [
+        -6.4202593618355195,
+        2.9284099233379663
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B40B",
+      "dx": -9.361219449123041,
+      "dy": 10.03845803320425,
+      "content": "QDF-1 Sala de Caldeiras",
+      "rotation": 0.0
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B40C",
+      "p1": [
+        -19.922936823482246,
+        2.9284099233379663
+      ],
+      "p2": [
+        -12.247428334166784,
+        2.951447485764845
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B40D",
+      "p1": [
+        -6.4202593618355195,
+        2.9284099233379663
+      ],
+      "p2": [
+        -2.4850667864799334,
+        2.9653754102666596
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B40E",
+      "dx": -19.709674493050557,
+      "dy": 3.3823219114054552,
+      "content": "Vem do QDGF",
+      "rotation": 0.0
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B410",
+      "p1": [
+        -9.274349443428832,
+        -9.22454808908654
+      ],
+      "p2": [
+        14.272799673250233,
+        -9.22454808908654
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B411",
+      "p1": [
+        14.272799673250233,
+        -9.22454808908654
+      ],
+      "p2": [
+        14.264895018818493,
+        9.518812980463451
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B412",
+      "p1": [
+        14.264895018818493,
+        9.518812980463451
+      ],
+      "p2": [
+        -9.274349443428832,
+        9.518812980463451
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B413",
+      "p1": [
+        -9.274349443428832,
+        9.518812980463451
+      ],
+      "p2": [
+        -9.274349443428832,
+        -9.22454808908654
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B414",
+      "p1": [
+        6.420157238598108,
+        -9.22454808908654
+      ],
+      "p2": [
+        6.420157238598108,
+        -9.806763585604557
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B415",
+      "p1": [
+        6.0339998259333925,
+        -9.806763585604557
+      ],
+      "p2": [
+        6.806314651262596,
+        -9.806763585604557
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B416",
+      "p1": [
+        6.2270785322649544,
+        -9.883995068137835
+      ],
+      "p2": [
+        6.613235944931034,
+        -9.883995068137835
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B417",
+      "p1": [
+        6.323617885430735,
+        -9.961226550671057
+      ],
+      "p2": [
+        6.516696591765253,
+        -9.961226550671057
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B418",
+      "p1": [
+        6.371887562015104,
+        -10.03845803320425
+      ],
+      "p2": [
+        6.468426915180885,
+        -10.03845803320425
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B419",
+      "dx": -9.171804955410948,
+      "dy": 2.857430899541839,
+      "content": "RST",
+      "rotation": 0.0
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B41A",
+      "dx": -9.171804955410948,
+      "dy": 2.857430899541839,
+      "content": "RST",
+      "rotation": 0.0
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B41B",
+      "dx": -3.1856693384003165,
+      "dy": -8.04156076758386,
+      "content": "\\A1;380 / 220 V - 123 A - 6 kA - {\\A0;\\fArial|b0|i0|c0|p34; \\Ftxt|c0;1 Barra Retangular de Cobre Pintada\\P por fase de 12 mm x 2 mm - seção 23,5 mm\\fArial|b0|i0|c0|p34;²}",
+      "rotation": 0.0
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO2",
+      "handle": "B432",
+      "dx": 16.92278922186881,
+      "dy": 1.7121060886695432,
+      "content": "RQDL1-1-RESERVA",
+      "rotation": 0.0
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B433",
+      "p1": [
+        -2.4850667864799334,
+        1.5152494313169598
+      ],
+      "p2": [
+        16.76161557195985,
+        1.5152494313169598
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B434",
+      "p1": [
+        16.76161557195985,
+        1.5152494313169598
+      ],
+      "p2": [
+        16.110775553146482,
+        1.756014325683367
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B435",
+      "p1": [
+        16.76161557195985,
+        1.5152494313169598
+      ],
+      "p2": [
+        16.10131273590548,
+        1.2739250382352623
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B588",
+      "dx": -15.319490549050556,
+      "dy": 3.5337843048187665,
+      "content": "\\A1;3#2,5",
+      "rotation": 0.0
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO",
+      "handle": "B589",
+      "dx": -11.72832864098666,
+      "dy": 3.6384290300223654,
+      "content": "\\pxsm1;{\\Fisocp|c0;MDWH-C10-3\\P\\Fisocp2|c0;10 A - 5 kA}",
+      "rotation": 0.0
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B743",
+      "p1": [
+        -2.4850667864799334,
+        2.9653754102666596
+      ],
+      "p2": [
+        -2.4850667864799334,
+        -8.07287170113716
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B744",
+      "p1": [
+        -2.4850667864799334,
+        2.9653754102666596
+      ],
+      "p2": [
+        -2.4850667864799334,
+        7.530740481687644
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "ELET_UNIFILAR_TEXTO2",
+      "handle": "B8C3",
+      "dx": 16.92278922186881,
+      "dy": -1.2956394365165522,
+      "content": "RQDL1-2-RESERVA",
+      "rotation": 0.0
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B8C4",
+      "p1": [
+        -2.4850667864799334,
+        -1.4924960938676577
+      ],
+      "p2": [
+        16.76161557195985,
+        -1.4924960938676577
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B8C5",
+      "p1": [
+        16.76161557195985,
+        -1.4924960938676577
+      ],
+      "p2": [
+        16.110775553146482,
+        -1.2517311995011369
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "B8C6",
+      "p1": [
+        16.76161557195985,
+        -1.4924960938676577
+      ],
+      "p2": [
+        16.10131273590548,
+        -1.7338204869509468
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "BA39",
+      "p1": [
+        -14.874358148175702,
+        3.2441245732425443
+      ],
+      "p2": [
+        -14.621603383481329,
+        3.2441245732425443
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "BA3A",
+      "p1": [
+        -14.999851930837963,
+        3.2441245732440507
+      ],
+      "p2": [
+        -14.999851930837963,
+        2.6122376615097664
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "BA3B",
+      "p1": [
+        -15.18941800435789,
+        3.2441245732440507
+      ],
+      "p2": [
+        -15.18941800435789,
+        2.6122376615097664
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "BA3C",
+      "p1": [
+        -14.747980765828402,
+        3.2441245732425443
+      ],
+      "p2": [
+        -14.747980765828402,
+        2.6122376615097664
+      ]
+    },
+    {
+      "type": "LINE",
+      "layer": "ELT_UNIFILAR_DESENHO",
+      "handle": "BA3D",
+      "p1": [
+        -15.378984077876225,
+        3.2441245732440507
+      ],
+      "p2": [
+        -15.378984077876225,
+        2.6122376615097664
+      ]
+    }
+  ],
+  "bbox": [
+    523.5729893138414,
+    165.0831058195451,
+    563.4188629608059,
+    185.1600218859536
+  ],
+  "expected_layers": [
+    "ELET_UNIFILAR_TEXTO",
+    "ELET_UNIFILAR_TEXTO2",
+    "ELT_UNIFILAR_DESENHO"
+  ],
+  "semantic_type": "PANEL_QDF"
+}

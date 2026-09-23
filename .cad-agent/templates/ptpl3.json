@@ -1,0 +1,48 @@
+{
+  "template_id": "ptpl3",
+  "name": "t",
+  "source_drawing": "/tmp/pytest-of-lucas/pytest-0/test_handle_rules_extra_group_0/a.dxf",
+  "anchor": [
+    1.2250502344273275,
+    5.0
+  ],
+  "handles": [
+    "2F",
+    "30"
+  ],
+  "relative_entities": [
+    {
+      "type": "LINE",
+      "layer": "L-FRAME",
+      "handle": "2F",
+      "p1": [
+        -1.2250502344273275,
+        -5.0
+      ],
+      "p2": [
+        -1.2250502344273275,
+        5.0
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "L-TXT",
+      "handle": "30",
+      "dx": -0.22505023442732752,
+      "dy": 0.0,
+      "content": "OLD",
+      "rotation": 0.0
+    }
+  ],
+  "bbox": [
+    0.0,
+    0.0,
+    2.450100468854655,
+    10.0
+  ],
+  "expected_layers": [
+    "L-FRAME",
+    "L-TXT"
+  ],
+  "semantic_type": "GENERIC"
+}

@@ -1,0 +1,57 @@
+# Domain configuration — versioned, no hardcodes in tools.
+units:
+  configured_fallback: null  # mm per drawing unit when INSUNITS=0; null => FAIL (never guess)
+  configured_unit_name: null
+
+tolerances:
+  coordinate_epsilon: 1.0e-4
+  endpoint_snap: 1.0
+  wall_contact: 2.0
+  bbox_clearance: 2.0
+  rotation_epsilon_deg: 0.5
+  template_relative_geometry_epsilon: 1.0
+  text_proximity: 25.0
+  conduit_connectivity: 1.0
+
+layers:
+  walls: ["ARQ", "ARQ-PAREDE", "PAREDE", "A-WALL", "ARCH", "WALL"]
+  conduit: "ELETRODUTO"
+  callout: "ELE-CALLOUT"
+  outlets: "ELE-TUG"
+  panels: "ELE-QUADRO"
+  protected: ["ARQ", "ARQ-PAREDE", "COTAS", "DIM", "AMBIENTES", "TEXTOS-ARQ"]
+
+block_aliases:
+  outlets: ["TUG", "TUE", "TOM", "2P+T"]
+  panels: ["QDF", "QDL", "QD"]
+
+circuit_regex: "\\bT\\d{1,3}\\b"
+
+routing:
+  policy: "orthogonal_tree"
+  clearance: 5.0
+  layer: "ELETRODUTO"
+
+collision_clearance: 2.0
+
+# Example room rules (override per project; bboxes in drawing units of the fixture)
+room_rules:
+  - room_id: "BANHEIRO"
+    bbox_or_polygon: {bbox: [0, 0, 4000, 3000]}
+    allowed_circuits: ["T18", "T19"]
+    forbidden_circuits: ["T16"]
+    panel: "QDL"
+  - room_id: "CONTROLE"
+    bbox_or_polygon: {bbox: [4000, 0, 9000, 3000]}
+    allowed_circuits: ["T16"]
+    forbidden_circuits: ["T19"]
+    panel: "QDF"
+
+panel_rules:
+  long_side_parallel_to_wall: true
+  min_clearance: 10.0
+
+callout_rules:
+  require_circuit: true
+  require_conductor_spec: true
+  placements: ["above", "below", "left", "right", "nearest_free", "template_default"]

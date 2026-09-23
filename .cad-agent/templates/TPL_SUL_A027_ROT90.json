@@ -1,0 +1,34 @@
+{
+  "template_id": "TPL_SUL_A027_ROT90",
+  "name": "TPL_SUL_A027_ROT90",
+  "source_drawing": "/mnt/c/Users/lucas/Desktop/Engenharia/ProjetosIndustriais/T1/RECAPADORA DE PNEUS - 2026-2-JOÃO 17-09-2026.dxf",
+  "anchor": [
+    372.226464856837,
+    79.84675603752403
+  ],
+  "handles": [
+    "A027"
+  ],
+  "relative_entities": [
+    {
+      "type": "INSERT",
+      "layer": "_COTAS",
+      "handle": "A027",
+      "block": "TOM_Monof_baixa",
+      "dx": 5.684341886080802e-14,
+      "dy": -0.19954859718905027,
+      "rotation": 89.99999999999999,
+      "attribs": {}
+    }
+  ],
+  "bbox": [
+    372.09195268737494,
+    79.64720744033498,
+    372.3609770262991,
+    80.04630463471308
+  ],
+  "expected_layers": [
+    "_COTAS"
+  ],
+  "semantic_type": "outlet"
+}

@@ -1,0 +1,8 @@
+# CAD agent runtime (generated, per-transaction/run)
+.cad-agent/transactions/
+.logs/cad-agent/
+# NOTE: .cad-agent/templates/ is TRACKED (curated rigid-group registry).
+# Tests must clean up template ids they create.
+**/previews/
+__pycache__/
+.pytest_cache/

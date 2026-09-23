@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "*execute_lisp*": "deny",
+    "*lisp*": "deny",
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "python3 cad_agent/tool_bridge.py *": "allow",
+      "python3 -m cad_agent *": "allow",
+      "python3 -m pytest tests/*": "allow"
+    }
+  },
+  "agent": {
+    "cad-inspector": {
+      "mode": "subagent",
+      "description": "Electrical CAD inspector — read-only discovery, handles, PlanManifest author"
+    },
+    "cad-executor": {
+      "mode": "subagent",
+      "description": "Electrical CAD executor — controlled writes via high-level tools, dry-run first, readback mandatory"
+    },
+    "cad-validator": {
+      "mode": "subagent",
+      "description": "Electrical CAD validator — read-only re-verification, returns PASS/FAIL"
+    },
+    "cad-router": {
+      "mode": "subagent",
+      "description": "CAD intent router — classifies every request (full_pipeline | inspect_only | conceptual | none), no drawing writes"
+    }
+  }
+}

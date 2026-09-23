@@ -1,0 +1,47 @@
+{
+  "template_id": "dbg2",
+  "name": "t",
+  "source_drawing": "/tmp/pytest-of-lucas/pytest-22/test_dbg20/a.dxf",
+  "anchor": [
+    4.125251172136638,
+    5.0
+  ],
+  "handles": [
+    "2F",
+    "30"
+  ],
+  "relative_entities": [
+    {
+      "type": "LINE",
+      "layer": "0",
+      "handle": "2F",
+      "p1": [
+        -4.125251172136638,
+        -5.0
+      ],
+      "p2": [
+        -4.125251172136638,
+        5.0
+      ]
+    },
+    {
+      "type": "MTEXT",
+      "layer": "0",
+      "handle": "30",
+      "dx": -3.125251172136638,
+      "dy": 0.0,
+      "content": "OLD",
+      "rotation": 0.0
+    }
+  ],
+  "bbox": [
+    0.0,
+    0.0,
+    8.250502344273276,
+    10.0
+  ],
+  "expected_layers": [
+    "0"
+  ],
+  "semantic_type": "GENERIC"
+}

@@ -1,0 +1,505 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage{icomma}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{resbg}{RGB}{235,242,250}
+\definecolor{accent}{RGB}{20,70,140}
+\titleformat{\section}{\large\bfseries\color{accent}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{accent}}{\thesubsection}{0.5em}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Partida Y-$\Delta$ -- Quest\~ao 4 (A2) -- Motor W22 IR3 Premium 90 kW}
+\fancyhead[R]{\small PIE -- IFSC Floripa}
+\fancyfoot[C]{\small\thepage}
+
+\newcommand{\res}[2]{\par\medskip\noindent\fcolorbox{accent}{resbg}{\begin{minipage}{0.96\linewidth}\textbf{#1}\\ #2\end{minipage}}\par\medskip}
+\newcommand{\src}[1]{\textit{[#1]}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Resolu\c{c}\~ao detalhada -- Partida Y-$\Delta$}\\[4pt]
+{\large Quest\~ao 4 (Prova A2) -- itens a a ac}\\[2pt]
+{\normalsize Motor WEG W22 IR3 Premium, 6 polos, comando 220 V, rede 380 V}
+\end{center}
+
+\section{Dados de entrada}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Grandeza & Valor (enunciado) \\
+\midrule
+Conjugado inicial requerido na partida & $C = 24\ \text{kgf$\cdot$m}$ (em $Y$) \\
+Rota\c{c}\~ao do processo & $n = 1200\ \text{rpm}$ \\
+Polos & $p = \dfrac{120\,f}{n} = \dfrac{120\cdot 60}{1200} = 6$ \\
+Temperatura / altitude & $50\,^{\circ}\text{C}$ / $964\ \text{m}$ \\
+Tens\~ao da rede / comando & $U = 380\ \text{V}$ (linha) / bobinas $220\ \text{V}$ \\
+Tempo de partida & $t_{pm} = 10\ \text{s}$ \\
+Instala\c{c}\~ao & cabos unipolares PVC em tr\'ifolio, eletrocalha em canaleta fechada, 2 circuitos (motor + banco) \\
+Comprimento & $30\ \text{m}$ (eletrocalha) $+1+1$ m $+\,3$ curvas $\times 3$ m $=41$ m \\
+Queda de tens\~ao m\'axima & $1\%$ \\
+Corrente de curto no barramento do CCM & $I_{cc}=7\ \text{kA}$ \\
+Fator de seguran\c{c}a dos contatores & $F_{seg}=1{,}05$ (vida $\le 5\%$) \\
+Banco de capacitores & UCWT35V49 S28: $35\ \text{kVAr}$ em $440\ \text{V}$, ligado junto aos bornes do motor \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+\textbf{Conven\c{c}\~oes.} Resultados truncados na segunda casa decimal (FS e FP com 4 casas), como exige o enunciado. Valores intermedi\'arios s\~ao calculados com precis\~ao total. Refer\^encias: \src{PIE 08 p.21} = slide PIE 08, p.~21 etc.; cat\'alogos WEG da pasta \emph{04 - Catalogos Tecnicos}.
+
+\section{Itens a, b, c -- Especifica\c{c}\~ao do motor e pot\^encias}
+
+\subsection{Do conjugado \`a pot\^encia}
+A pot\^encia mec\^anica associada a um conjugado \'e obtida por
+\begin{equation}
+P\,[\text{kW}] = \frac{C\,[\text{kgf$\cdot$m}]\; n\,[\text{rpm}]}{974}
+\qquad \src{PIE 08 p.21}
+\end{equation}
+Pelo enunciado, o conjugado de $24\ \text{kgf$\cdot$m}$ \'e requerido em $Y$ (partida com tens\~ao reduzida). Como o conjugado em $Y$ \'e $1/3$ do conjugado em $\Delta$, a pot\^encia em $\Delta$ \'e tr\^es vezes a de $Y$. A corre\c{c}\~ao por temperatura/altitude (fator $F_{Temp}$) \'e aplicada \emph{depois} da convers\~ao, como pede o enunciado:
+\begin{align}
+P_Y &= \frac{24\cdot 1200}{974} = 29{,}57\ \text{kW} \\
+F_{Temp} &= 0{,}92 \qquad \text{(50\,$^{\circ}$C, coluna 1000\,m; 964\,m usa a mesma coluna, no lado conservador)} \ \src{PIE 09 p.37} \\
+P_{Y,req} &= \frac{P_Y}{F_{Temp}} = \frac{29{,}57}{0{,}92} = 32{,}14\ \text{kW} \\
+P_{\Delta} &= 3\,P_{Y,req} = 3\cdot 32{,}14 = 96{,}42\ \text{kW}
+\end{align}
+Verifica\c{c}\~ao do torque em $\Delta$: $C_{\Delta,req} = 3\cdot 24 = 72\ \text{kgf$\cdot$m}$.
+
+\subsection{Sele\c{c}\~ao do motor}
+Pot\^encia nominal m\'inima com o fator de servi\c{c}o do cat\'alogo ($FS_{cat}=1{,}25$, W22 IR3 Premium 90 kW, p.~36):
+\begin{equation}
+P_{nom,min} = \frac{P_\Delta}{FS_{cat}} = \frac{96{,}42}{1{,}25} = 77{,}14\ \text{kW}
+\;\Rightarrow\; \text{comercial: } 90\ \text{kW}
+\end{equation}
+Motor escolhido: \textbf{W22 IR3 Premium 90 kW / 125 cv / 74 kgf$\cdot$m}, carca\c{c}a 280S/M, 6 polos, 1185 rpm, $C_n=74\ \text{kgf$\cdot$m}\ge 72\ \text{kgf$\cdot$m}$ (OK). Dados de cat\'alogo usados: $\eta_{100\%}=95{,}3\%$, $\cos\varphi_{100\%}=0{,}83$, $I_p/I_n=6{,}0$, $t_{rb}$ quente $=16$\,s, frio $=35$\,s.
+
+\res{Item a -- Especifica\c{c}\~ao:}{W22 IR3 Premium, \textbf{90 kW / 125 HP / 74 kgf$\cdot$m}, 6 polos.}
+
+\subsection{Pot\^encia el\'etrica m\'inima (item b) e fator de servi\c{c}o (item c)}
+\begin{align}
+P_e &= \frac{P_\Delta}{\eta} = \frac{96{,}42}{0{,}953} = 101{,}17\ \text{kW} \qquad\text{(item b)}\\
+FS_{req} &= \frac{P_\Delta}{P_{nom}} = \frac{96{,}42}{90} = 1{,}0713 \le FS_{cat} = 1{,}25 \;\Rightarrow\; \text{OK}
+\end{align}
+O motor opera acima da pot\^encia nominal, portanto utiliza-se o \textbf{Fator de Servi\c{c}o} (FS), n\~ao o Fator de Utiliza\c{c}\~ao. Deixar isso expl\'icito no memorial (PIE 09, p.~46).
+
+\res{Itens b e c:}{$P_e = 101{,}17$\,kW \qquad $FS = 1{,}0713$ (usado).}
+
+\section{Itens d, e -- Correntes demandadas (sem e com corre\c{c}\~ao do FP)}
+
+\subsection{Sem corre\c{c}\~ao (item d)}
+\begin{equation}
+I_n = \frac{P_\Delta\cdot 10^3}{\sqrt{3}\,U\,\eta\,\cos\varphi}
+= \frac{96\,420}{\sqrt{3}\cdot 380\cdot 0{,}953\cdot 0{,}83} = 185{,}20\ \text{A}
+\qquad \src{PIE 09 p.6}
+\end{equation}
+
+\subsection{Corre\c{c}\~ao do FP com o banco (item e)}
+O banco \'e de $35\ \text{kVAr}$ em $440\ \text{V}$, mas opera em $380\ \text{V}$. A pot\^encia reativa varia com o quadrado da tens\~ao:
+\begin{equation}
+Q_{c,380} = Q_{c,440}\left(\frac{380}{440}\right)^2 = 35\cdot 0{,}7459 = 26{,}10\ \text{kVAr}
+\end{equation}
+Tri\^angulo de pot\^encias (com $P = P_e = 101{,}17$\,kW):
+\begin{align}
+Q_0 &= P_e\tan(\arccos 0{,}83) = 101{,}17\cdot 0{,}6721 = 67{,}99\ \text{kVAr}\\
+Q' &= Q_0 - Q_{c,380} = 67{,}99 - 26{,}105 = 41{,}88\ \text{kVAr}\\
+S' &= \sqrt{P_e^2+Q'^2} = \sqrt{101{,}17^2+41{,}88^2} = 109{,}50\ \text{kVA}
+\end{align}
+Corrente com FP corrigido:
+\begin{equation}
+I_{n,corr} = \frac{S'\cdot 10^3}{\sqrt{3}\,U} = \frac{109\,500}{\sqrt{3}\cdot 380} = 166{,}37\ \text{A}\qquad\text{(item e)}
+\end{equation}
+
+\res{Itens d e e:}{$I_n = 185{,}20$\,A (sem FP) \qquad $I_{n,corr}=166{,}37$\,A (com FP).}
+
+\section{Itens f, g, h -- Instala\c{c}\~ao e fatores de corre\c{c}\~ao}
+
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Item f -- m\'etodo de instala\c{c}\~ao.} Eletrocalha instalada dentro de canaleta fechada. A canaleta fechada \'e o m\'etodo 33 (condutores isolados ou unipolares em canaleta fechada), de refer\^encia \textbf{B1} (PIE 04, p.~33/39). A eletrocalha est\'a dentro da canaleta, portanto tamb\'em \'e um ``conduto fechado''.
+\item \textbf{Item g -- fator de temperatura} (PVC, $70\,^{\circ}$C, ambiente 50\,$^{\circ}$C, linhas n\~ao subterr\^aneas): $f_1 = \mathbf{0{,}71}$ \src{PIE 04 p.52}.
+\item \textbf{Item h -- fator de agrupamento.} Dois circuitos (motor e banco) no mesmo conduto fechado: linha 1 da Tabela de agrupamento, $f_2 = \mathbf{0{,}80}$ \src{PIE 04 p.60}.
+\end{itemize}
+
+\res{Itens f, g, h:}{Método 33 (ref. B1) \qquad $f_1=0{,}71$ \qquad $f_2=0{,}80$.}
+
+\section{Item i -- FP ap\'os a corre\c{c}\~ao}
+\begin{equation}
+FP' = \frac{P_e}{S'} = \frac{101{,}17}{109{,}50} = 0{,}9239 \qquad\text{(4 casas, truncado)}
+\end{equation}
+\res{Item i:}{$FP' = 0{,}9239$}
+
+\section{Itens j, k -- Correntes de partida}
+
+Dois regimes distintos, conforme a observa\c{c}\~ao do enunciado (\emph{``os capacitores n\~ao afetam as condi\c{c}\~oes de partida, pois n\~ao s\~ao conectados em regime transit\'orio sob tens\~ao reduzida''}):
+
+\noindent\textbf{(j) Partida em $Y$} (tens\~ao reduzida, banco aberto: usa-se $I_n$ sem corre\c{c}\~ao):
+\begin{equation}
+I_{pm,Y} = \frac{I_p}{I_n}\cdot\frac{I_n}{3} = 6\cdot\frac{185{,}20}{3} = 370{,}40\ \text{A}
+\end{equation}
+\noindent\textbf{(k) Regime nominal de tens\~ao} ($\Delta$, banco ativo: usa-se $I_{n,corr}$):
+\begin{equation}
+I_{pm,\Delta} = \frac{I_p}{I_n}\cdot I_{n,corr} = 6\cdot 166{,}37 = 998{,}22\ \text{A}
+\end{equation}
+
+\res{Itens j e k:}{$j = 370{,}40$\,A \qquad $k = 998{,}22$\,A (ver nota na se\c{c}\~ao 14).}
+
+\section{Itens l, m -- Condutor de alimenta\c{c}\~ao e queda de tens\~ao}
+
+\subsection{Corrente de projeto}
+No trecho contatores--motor (ramo $\Delta$), cada condutor de fase conduz a corrente de fase da bobina:
+\begin{equation}
+I_P = \frac{I_{n,corr}}{\sqrt{3}} = \frac{166{,}37}{\sqrt{3}} = 96{,}05\ \text{A}\qquad \src{PIE 09 p.39}
+\end{equation}
+
+\subsection{Crit\'erio 1 -- capacidade de condu\c{c}\~ao (ampacidade)}
+\begin{equation}
+I_z \ge \frac{I_P}{f_1 f_2} = \frac{96{,}05}{0{,}71\cdot 0{,}80} = 169{,}11\ \text{A}
+\end{equation}
+Tabela de ampacidade PVC (tabela 9.4), m\'etodo B1, 3 condutores carregados (cobre):
+\begin{center}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+Se\c{c}\~ao [mm$^2$] & $I_z$ [A] & $I_z'=I_z f_1 f_2$ [A] & $I_z\ge 169{,}11$? & $I_z'\ge I_{aj,min}=100{,}85$? \\
+\midrule
+70 & 171 & 97{,}13 & sim & \textbf{n\~ao} \\
+95 & 207 & 117{,}58 & sim & \textbf{sim} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\src{PIE 04 p.54}
+
+\subsection{Crit\'erio 2 -- coordena\c{c}\~ao com o rel\'e de sobrecarga}
+O rel\'e de sobrecarga deve proteger o condutor: $I_{aj}\le I_z'$. Como $I_{aj}\ge 1{,}05\,I_P = 100{,}85$\,A (ver se\c{c}\~ao 10), o condutor precisa de $I_z' \ge 100{,}85$\,A. A se\c{c}\~ao de 70\,mm$^2$ d\'a $I_z' = 97{,}13$\,A (insuficiente); a de 95\,mm$^2$ d\'a $117{,}58$\,A (adequada). \textbf{Adota-se 95\,mm$^2$.}
+
+\subsection{Crit\'erio 3 -- queda de tens\~ao}
+Comprimento: $L_{max}=30+1+1+3\cdot 3 = 41$\,m (3\,m por curva para bitola $\ge 10$\,mm$^2$, PIE 05, p.~17).
+\begin{equation}
+\Delta V\% = \frac{173{,}2\,\rho\,L_{max}\,I}{S\,V_{ff}}
+= \frac{173{,}2\cdot 0{,}0172\cdot 41\cdot 166{,}37}{95\cdot 380} = 0{,}56\,\%\le 1\,\%\ \checkmark
+\qquad \src{PIE 05 p.20}
+\end{equation}
+Verifica\c{c}\~ao na partida (refer\^encia de 10\,\%, PIE 05, p.~17):
+$\Delta V\%_{partida} = 173{,}2\cdot 0{,}0172\cdot 41\cdot 370{,}40/(95\cdot 380)=1{,}25\,\% \le 10\,\%$ (c\'alculo conservador, sem FP=0{,}3).
+
+\subsection{Condutor de prote\c{c}\~ao}
+Pela NBR 5410 (tabela 58), para $S>35$\,mm$^2$: $S_{PE}=S/2=47{,}5$\,mm$^2 \to$ \textbf{50\,mm$^2$} comercial (PIE 05, p.~49).
+
+\res{Itens l e m:}{Condutor: \textbf{$3\#95(50)$\,mm$^2$, PVC, unipolar, tr\'ifolio} (PE 50\,mm$^2$). \qquad $\Delta V\% = 0{,}56\,\%$.}
+
+\section{Item n -- Seccionadora}
+$I_L = I_{n,corr} = 166{,}37$\,A $>160$\,A (limite da linha MSW). Seleciona-se a linha FSW:
+\res{Item n:}{\textbf{FSW250-3} (250\,A).}
+
+\section{Itens o, p, q -- Contatores K1, K2, K3}
+Corrente m\'inima de projeto (PIE 09, p.~42--44, com $F_{seg}=1{,}05$):
+\begin{align}
+K_1,K_2:\quad I_{CT} &\ge \frac{I_L}{\sqrt{3}}\,F_{seg} = I_P\cdot 1{,}05 = 96{,}05\cdot 1{,}05 = 100{,}85\ \text{A}\\
+K_3:\quad I_{CT} &\ge \frac{I_L}{3}\,F_{seg} = \frac{166{,}37}{3}\cdot 1{,}05 = 58{,}23\ \text{A}
+\end{align}
+Contatores com comando em 220\,V (c\'odigo V26, 60\,Hz) e auxiliares 2NA+2NF (c\'odigo 22):
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{K1 e K2:} \textbf{CWM105-22-30-V26} ($105$\,A).
+\item \textbf{K3:} inicialmente CWM65 ($65$\,A), mas o limite de fus\'ivel m\'aximo do CWM65 \'e $125$\,A (cat\'alogo, p.~5). Isso \'e incompat\'ivel com o fus\'ivel de $160$\,A exigido na se\c{c}\~ao 11. Adota-se \textbf{CWM95-22-30-V26} ($I_{f,max}=160$\,A). PIE 09, p.~52 indica exatamente esta solu\c{c}\~ao: ``especificar K3 para obter um fus\'ivel m\'aximo''.
+\end{itemize}
+\res{Itens o, p, q:}{K1 = CWM105-22-30-V26 \quad K2 = CWM105-22-30-V26 \quad K3 = CWM95-22-30-V26}
+
+\section{Itens r, s, t -- Rel\'e de sobrecarga}
+
+\subsection{Faixa de ajuste (item r)}
+Rel\'e eletr\^onico (IEC 60947-4-1), ajuste na corrente de fase do $\Delta$ (rel\'e em K1, PIE 09, p.~46):
+\begin{equation}
+1{,}05\,I_P \le I_{aj} \le 1{,}15\,I_P \;\Rightarrow\; 100{,}85\ \text{A}\le I_{aj}\le 110{,}46\ \text{A}
+\end{equation}
+Escolhe-se \textbf{$I_{aj}=105$\,A} (dentro da faixa e $\le I_z'=117{,}58$\,A). Rel\'e \textbf{RWM420E-3-A4U250}, faixa de ajuste 50--250\,A (cat\'alogo RW\_E, p.~9), classe 10 (t\'ermino da partida em $t_{pm}=10$\,s).
+
+\subsection{Tempo de atua\c{c}\~ao na partida (item s)}
+Corrente de partida vista pelo rel\'e (regime $Y$, banco aberto): $I_{pm,Y}=370{,}40$\,A.
+\begin{equation}
+M = \frac{I_{pm,Y}}{I_{aj}} = \frac{370{,}40}{105} = 3{,}53
+\end{equation}
+Pela curva classe 10 do rel\'e (cat\'alogo RW\_E, p.~5), obtida digitalizando os vetores do gr\'afico, com $M=3{,}53$ o tempo de disparo \'e $t_{ar}\approx \mathbf{11{,}7\,s}$.
+
+\subsection{Rotor bloqueado (item t) e verifica\c{c}\~ao}
+Condi\c{c}\~ao severa: rotor bloqueado a quente, $t_{rb}^{quente}=16$\,s (cat\'alogo W22 90 kW, p.~36).
+\begin{equation}
+t_{rb}\ge t_{ar}>t_{pm}\;\Rightarrow\;16\ge 11{,}7 > 10 \quad\checkmark \qquad \src{PIE 09 p.47}
+\end{equation}
+
+\res{Itens r, s, t:}{Rel\'e RWM420E-3-A4U250, $I_{aj}=105$\,A, classe 10, $F_{max}=500$\,A \quad $t_{ar}\approx 11{,}7$\,s \quad $t_{rb}=16$\,s}
+
+\section{Itens u, v, x -- Fus\'iveis de prote\c{c}\~ao do motor}
+
+\subsection{Posi\c{c}\~ao do fus\'ivel: linha ou fase?}
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Fus\'ivel na linha} ($I_{nm}=I_L$, PIE 09, p.~51--52): $I_{nf}\ge 1{,}2\cdot I_{n,corr}=199{,}64$\,A. Corrigindo pela temperatura ($f_T=0{,}87$): $I_{nf}\ge 199{,}64/0{,}87=229{,}5$\,A $\Rightarrow$ FNH1-250U. Mas o contator K1/K2 (CWM105) tem $I_{f,max}=200$\,A. \textbf{Imposs\'ivel na linha}, como ocorre no exemplo da aula (p.~52, ``IMPOSS\'IVEL'').
+\item \textbf{Fus\'ivel na fase} ($I_{nm}=I_F$, PIE 09, p.~83--87): usa-se $I_F=I_P=96{,}05$\,A. \textbf{Adotado.}
+\end{itemize}
+
+\subsection{Limites (item u)}
+\begin{align}
+I_{nf,min} &= 1{,}2\cdot I_F = 1{,}2\cdot 96{,}05 = 115{,}26\ \text{A}\\
+I_{nf,max} &= \min\left(I_{f,max}\right) = \min(200;\ 160)=160\ \text{A}\qquad\text{(K1/K2: 200\,A; K3 CWM95: 160\,A)}
+\end{align}
+Como o fus\'ivel est\'a sujeito a $50\,^{\circ}$C, a corrente corrigida deve atender ao m\'inimo:
+$I_{nf,min,corr} = 115{,}26/0{,}87 = 132{,}49$\,A.
+
+\subsection{Fator de temperatura (item v) e escolha (item x)}
+Fator $T_a$ do fus\'ivel WEG a $50\,^{\circ}$C: \textbf{0,87} (cat\'alogo de fus\'iveis, p.~29).
+\begin{align}
+\text{FNH00-125U:}\quad 125\cdot 0{,}87 &= 108{,}75\ \text{A} < 115{,}26 \quad\times\\
+\text{FNH00-160U:}\quad 160\cdot 0{,}87 &= 139{,}20\ \text{A} \ge 115{,}26 \quad\checkmark
+\end{align}
+Escolhe-se \textbf{6 fus\'iveis FNH00-160U} (F1 a F6, uma por ramo de fase, PIE 09, p.~84--87), gL/gG NH contato faca, tamanho 00, faixa 4--160\,A (cat\'alogo p.~22).
+
+\res{Itens u, v, x:}{u: m\'inimo $115{,}26$\,A, m\'aximo $160$\,A \qquad v: $f_T=0{,}87$ \qquad x: \textbf{FNH00-160U, na fase}}
+
+\section{Itens z, aa, ab, ac -- Ruptura, tempos e suportabilidade}
+
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{z -- capacidade de ruptura:} $120$\,kA a $500$\,V (cat\'alogo p.~4) $\ge I_{cc}=7$\,kA $\checkmark$.
+\item \textbf{aa -- tempo a $I_{cc}=7$\,kA:} curva tempo $\times$ corrente do FNH00-160 (cat\'alogo p.~24), digitalizada: $t_{ad}\approx 0{,}001$\,s.
+\item \textbf{ab -- tempo a $I_{pm,Y}=370{,}40$\,A:} curva digitalizada (FNH00-160): $t\approx 178$\,s, $\gg t_{pm}=10$\,s. O fus\'ivel \textbf{n\~ao atua na partida}; quem protege a partida \'e o rel\'e (item s).
+\item \textbf{ac -- suportabilidade do condutor a $I_{cc}$:} \src{PIE 06 p.44--45}, $K=115$ (PVC, cabos enfeixados: PIE 05, p.~47), $S=95$\,mm$^2$:
+\begin{equation}
+T = \left(\frac{K\,S}{I_{cc}}\right)^2 = \left(\frac{115\cdot 95}{7000}\right)^2 = 2{,}43\ \text{s}
+\end{equation}
+Verifica\c{c}\~ao: $t_{ad}\le T$ $\Rightarrow$ $0{,}001\le 2{,}43$ $\checkmark$.
+\end{itemize}
+
+\res{Itens z, aa, ab, ac:}{$z = 120$\,kA \quad $aa\approx 0{,}001$\,s \quad $ab\approx 178$\,s (n\~ao atua) \quad $ac = 2{,}43$\,s}
+
+\section{Quadro-resumo da resolu\c{c}\~ao}
+
+\begin{tabularx}{\linewidth}{@{}clX@{}}
+\toprule
+Item & Grandeza & Resultado \\
+\midrule
+a & Especifica\c{c}\~ao do motor & W22 IR3 Premium, 90\,kW / 125\,HP / 74\,kgf$\cdot$m \\
+b & Pot\^encia el\'etrica m\'inima & $101{,}17$\,kW \\
+c & Fator usado & FS $=1{,}0713$ \\
+d & Corrente sem corre\c{c}\~ao do FP & $185{,}20$\,A \\
+e & Corrente com corre\c{c}\~ao do FP & $166{,}37$\,A \\
+f & Instala\c{c}\~ao / m\'etodo & Canaleta fechada, m\'etodo 33 (ref. B1) \\
+g & Fator de temperatura & $0{,}71$ \\
+h & Fator de agrupamento & $0{,}80$ \\
+i & FP ap\'os corre\c{c}\~ao & $0{,}9239$ \\
+j & Partida $Y$ (sub-tens\~ao) & $370{,}40$\,A \\
+k & Partida em $\Delta$ (tens\~ao nominal) & $998{,}22$\,A \\
+l & Condutor & $3\#95(50)$\,mm$^2$ PVC unipolar, tr\'ifolio \\
+m & Queda de tens\~ao & $0{,}56\,\%$ \\
+n & Seccionadora & FSW250-3 \\
+o & Contator K1 & CWM105-22-30-V26 \\
+p & Contator K2 & CWM105-22-30-V26 \\
+q & Contator K3 & CWM95-22-30-V26 \\
+r & Rel\'e de sobrecarga & RWM420E-3-A4U250, $I_{aj}=105$\,A, classe 10 \\
+s & Tempo do rel\'e na partida & $\approx 11{,}7$\,s \\
+t & Rotor bloqueado (quente) & $16$\,s \\
+u & Limites do fus\'ivel & m\'in. $115{,}26$\,A; m\'ax. $160$\,A \\
+v & Fator de temperatura do fus\'ivel & $0{,}87$ \\
+x & Fus\'ivel & FNH00-160U (6 unidades), na fase \\
+z & Capacidade de ruptura & $120$\,kA \\
+aa & Tempo do fus\'ivel a $I_{cc}$ & $\approx 0{,}001$\,s \\
+ab & Tempo do fus\'ivel a $I_{pm}$ & $\approx 178$\,s (n\~ao atua) \\
+ac & Suportabilidade do condutor & $2{,}43$\,s \\
+\bottomrule
+\end{tabularx}
+
+\section{Compara\c{c}\~ao com a resolu\c{c}\~ao de refer\^encia e com o manuscrito}
+
+Foram confrontados os valores manuscritos na folha do aluno (\texttt{dante-2.jpg}) e a resolu\c{c}\~ao de refer\^encia (\emph{PIE A2 -- resolvida pelo Carlos A Leite}, pasta P2). Diverg\^encias e motivos:
+
+\begin{tabularx}{\linewidth}{@{}p{2.3cm}p{4.4cm}p{4.4cm}X@{}}
+\toprule
+Item & Manuscrito & Esta resolu\c{c}\~ao & Motivo \\
+\midrule
+b, d, e, k & 101{,}18 / 185{,}21 / 166{,}38 / 998{,}28 & 101{,}17 / 185{,}20 / 166{,}37 / 998{,}22 & Diferen\c{c}as de arredondamento; o enunciado pede truncamento. \\
+h & 1 & 0{,}80 & Dois circuitos em conduto fechado (PIE 04, p.~60). \\
+j & 332{,}76 A & 370{,}40 A & Partida em $Y$ = sub-tens\~ao, banco aberto: sem corre\c{c}\~ao. \\
+l & 70(35) & $3\#95(50)$ & Rel\'e $I_{aj}\ge 100{,}85$\,A exige $I_z'\ge 100{,}85$\,A (o manuscrito j\'a anotou ``aumente devido ao rel\'e''). \\
+m & 0{,}44\,\% & 0{,}56\,\% & Com 95\,mm$^2$ e 41\,m. \\
+q & CWM65 & CWM95 & Fus\'ivel de 160\,A exige $I_{f,max}\ge 160$\,A. \\
+u, x & 199{,}64 / 207{,}95 A; FNH1-250U (linha) & 115{,}26 / 160 A; FNH00-160U (fase) & Fus\'ivel na linha excede $I_{f,max}$ dos contatores (200 A). \\
+aa & 0{,}003 s & $\approx 0{,}001$\,s & Curva digitalizada do FNH00-160 (n\~ao do FNH1-250). \\
+ac & 1{,}32 s & 2{,}43 s & Com 95\,mm$^2$ (o manuscrito usou 70\,mm$^2$). \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+\textbf{Ponto a confirmar com o professor -- item k.} A resolu\c{c}\~ao de refer\^encia d\'a $k=332{,}73$\,A ($=2\,I_{n,corr}$), dividindo por 3. Mas $k$ \'e definido como corrente em \emph{regime nominal de tens\~ao} ($\Delta$, banco ativo), e a convers\~ao $Y\to\Delta$ triplica a corrente de linha. Por isso adotou-se $I_p/I_n\cdot I_{n,corr}=998{,}22$\,A. Se o professor considerar o valor de $332{,}73$\,A, ele corresponde \`a corrente de partida ap\'os a comuta\c{c}\~ao com o motor j\'a acelerado, e n\~ao altera os demais itens (que usam $j$).
+
+\section{Parte II -- Outras partidas com o mesmo processo}
+
+\subsection{Premissas para comparar}
+Para isolar o efeito do m\'etodo de partida, todas as partidas desta parte usam os mesmos dados do processo:
+\begin{itemize}[leftmargin=1.2em]
+\item conjugado requerido na partida $C_{req}=24$\,kgf$\cdot$m, rota\c{c}\~ao $1200$\,rpm, $F_{Temp}=0{,}92$ (50\,$^\circ$C, 964\,m), tempo de partida $t_{pm}=10$\,s;
+\item cabos PVC unipolares em tr\'ifolio, m\'etodo 33 (ref. B1), $f_1=0{,}71$; \textbf{sem banco de capacitores} (FP natural do motor) e, portanto, $f_2=1{,}00$ (um circuito no conduto);
+\item comprimento $L=41$\,m, queda m\'axima $1\%$ (regime), $I_{cc}=7$\,kA, $F_{seg}=1{,}05$.
+\end{itemize}
+A diferen\c{c}a para a Parte I (Y-D com banco) deve ser lembrada na compara\c{c}\~ao: o banco reduz a corrente de linha, mas o agrupamento com 2 circuitos ($f_2=0{,}80$) aumenta a bitola do condutor.
+
+\subsection{O que cada partida faz com torque e corrente}
+Antes dos c\'alculos, a tabela resume a grandeza que cada m\'etodo altera. Todos os c\'alculos seguem dessa grandeza.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright}p{2.9cm}>{\raggedright}p{3.6cm}>{\raggedright}p{3.5cm}X@{}}
+\toprule
+M\'etodo & Tens\~ao na partida & Torque de partida & Corrente de partida (linha) \\
+\midrule
+Direta (DOL) & $U$ & $C_p$ & $I_p = \dfrac{I_p}{I_n}\,I_n$ \\
+Estrela-tri\^angulo & $U/\sqrt{3}$ & $C_p/3$ & $I_p/3$ (do motor em $\Delta$) \\
+Compensadora (TAP $k$) & $k\,U$ & $k^2 C_p$ & $k^2 I_p$ (linha); $k\,I_p$ (motor) \\
+S\'erie-paralela & $U/2$ por enrolamento & $C_p/4$ & $I_p/4$ \\
+Soft-starter & rampa ajustada por tiristores & $\approx C_p\,(I_{lim}/I_p)^2$ & $I_{lim}$ \\
+Inversor de frequ\^encia & $V/f$ constante & limitado pelo derating & $\le 1{,}5\,I_n$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\src{PIE 09 p.5--6, 93--101; PIE 10 p.6--8, 12--14, 42--43, 70}. A rela\c{c}\~ao $I_p/I_n = 6{,}7$ (motor 30\,kW) \'e a do cat\'alogo W22.
+
+\subsection{Motor de refer\^encia para as partidas diretas}
+Como a partida direta, a compensadora e a soft-starter n\~ao reduzem a pot\^encia requerida (n\~ao h\'a o fator $3$ do Y-D), o motor pode ser menor. Dados do W22 IR3 Premium 30\,kW / 40\,cv (6 polos, carca\c{c}a 200L):
+$C_n=24{,}8$\,kgf$\cdot$m, $C_p/C_n=2{,}4$, $I_p/I_n=6{,}7$, $\eta_{100\%}=94{,}1\,\%$, $\cos\varphi_{100\%}=0{,}79$, $FS=1{,}25$, $t_{rb}^{quente}=15$\,s, $t_{rb}^{frio}=33$\,s \src{cat\'alogo W22, p.~36}.
+
+\begin{align}
+P_{req} &= \frac{C_{req}\,n}{974\,F_{Temp}} = \frac{24\cdot 1200}{974\cdot 0{,}92} = 32{,}14\ \text{kW}
+\qquad\text{(sem o fator 3 do Y-D)}\\
+FS_{req} &= \frac{P_{req}}{30} = 1{,}0713 \le 1{,}25 \;\checkmark\\
+P_e &= \frac{P_{req}}{\eta} = \frac{32{,}14}{0{,}941} = 34{,}16\ \text{kW}\\
+I_n &= \frac{P_e\cdot 10^3}{\sqrt{3}\,U\,FP} = \frac{34\,160}{\sqrt{3}\cdot 380\cdot 0{,}79} = 65{,}69\ \text{A}
+\end{align}
+Verifica\c{c}\~ao de torque: $C_p = 2{,}4\cdot 24{,}8 = 59{,}5$\,kgf$\cdot$m $\ge 24$\,kgf$\cdot$m $\checkmark$.
+
+\subsection{Partida direta (DOL)}
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Corrente de partida:} $I_{pm}=\dfrac{I_p}{I_n}I_n = 6{,}7\cdot 65{,}69 = 440{,}1$\,A (linha, tens\~ao nominal).
+\item \textbf{Condutor:} $I_P=I_n=65{,}69$\,A (sem $\sqrt{3}$: a corrente de linha circula por todo o trecho). $I_z\ge \dfrac{65{,}69}{0{,}71\cdot 1{,}00}=92{,}5$\,A $\Rightarrow$ 35\,mm$^2$ ($I_z=110$\,A, $I_z'=78{,}1$\,A). Coordena\c{c}\~ao com o rel\'e: $I_{aj}\le I_z'$.
+\item \textbf{Queda de tens\~ao:} em regime $\Delta V\%=0{,}60\,\%$; na partida (c\'alculo simplificado, limite de $10\,\%$) $\Delta V\%=\dfrac{173{,}2\cdot 0{,}0172\cdot 41\cdot 440{,}1}{35\cdot 380}=4{,}04\,\%$ \src{PIE 05 p.17, 20}. A partida direta \'e a que mais pesa na rede.
+\item \textbf{Seccionadora:} $I_n=65{,}7$\,A $\Rightarrow$ MSW80.
+\item \textbf{Contator K1:} $I_{CT}\ge 1{,}05\cdot 65{,}69 = 68{,}97$\,A $\Rightarrow$ CWM80-22-30-V26 ($I_{f,max}=125$\,A).
+\item \textbf{Rel\'e:} $1{,}05\,I_n\le I_{aj}\le 1{,}15\,I_n \Rightarrow 68{,}97\le I_{aj}\le 75{,}54$\,A $\Rightarrow$ $I_{aj}=72$\,A (RWM112E, faixa 28--112\,A). Na partida, $M=\dfrac{I_{pm}}{I_{aj}}=\dfrac{440{,}1}{72}=6{,}11$. Curvas digitalizadas do RW\_E: classe 10 $\to 7{,}7$\,s; classe 20 $\to 12{,}3$\,s; classe 30 $\to 21{,}3$\,s. A regra $t_{rb}\ge t_{ar}>t_{pm}$ com $t_{rb}=15$\,s e $t_{pm}=10$\,s s\'o aceita a \textbf{classe 20}.
+\item \textbf{Fus\'ivel (linha):} $I_{nf}\ge 1{,}2\cdot 65{,}69 = 78{,}8$\,A; corrigido ($T_a=0{,}87$) exige $I_{nf}\ge 90{,}6$\,A. Com $I_{f,max}=125$\,A (K1), escolhe-se \textbf{FNH00-125U}, corrigido $125\cdot 0{,}87=108{,}8$\,A $\checkmark$. Verifica\c{c}\~ao do tempo na partida (curva digitalizada): a $440$\,A, o FNH00-125U atua em $\approx 15{,}8$\,s $\ge t_{pm}$ $\checkmark$; o FNH00-100U atuaria em $\approx 4{,}3$\,s, ou seja, \textbf{fundiria na partida}.
+\item \textbf{Curto-circuito:} $T_{cabo}=\left(\dfrac{115\cdot 35}{7000}\right)^2=0{,}33$\,s; $t_{ad}$ do fus\'ivel a $7$\,kA $\approx 0{,}001$\,s $\le 0{,}33$\,s $\checkmark$.
+\end{enumerate}
+
+\subsection{Partida compensadora (autotransformador)}
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Escolha do TAP:} o torque no TAP $k$ \'e $k^2 C_p$:
+\[
+C_{50\%}=0{,}25\cdot 59{,}5=14{,}9\ \text{kgf$\cdot$m}\ (<24:\ \text{n\~ao parte}),\quad
+C_{65\%}=0{,}4225\cdot 59{,}5=25{,}1\ (\text{folga de }5\,\%),\quad
+C_{80\%}=0{,}64\cdot 59{,}5=38{,}1\ (\checkmark)
+\]
+Adota-se \textbf{TAP 80\,\%}. O TAP de 50\,\% (usado no exemplo do banco de quest\~oes) n\~ao acelera esta carga.
+\item \textbf{Correntes na partida:} linha $I_{pm,L}=k^2 I_{pm,DOL}=0{,}64\cdot 440{,}1=281{,}7$\,A; motor $I_{pm,M}=k\,I_{pm,DOL}=0{,}8\cdot 440{,}1=352{,}1$\,A (o rel\'e est\'a no lado do motor).
+\item \textbf{Condutor:} $I_P=I_n=65{,}69$\,A $\Rightarrow$ 35\,mm$^2$ (igual \`a direta). $\Delta V\%$ na partida pela linha: $\dfrac{173{,}2\cdot 0{,}0172\cdot 41\cdot 281{,}7}{35\cdot 380}=2{,}6\,\%$.
+\item \textbf{Contatores (pior caso de cada TAP, \src{PIE 09 p.100--102}):}
+\[
+K_1\ge 1{,}05\,I_n=68{,}97\text{ A}\Rightarrow\text{CWM80};\qquad
+K_2\ge 1{,}05\,k^2 I_n = 44{,}14\text{ A}\Rightarrow\text{CWM50};\qquad
+K_3\ge 1{,}05\,(k-k^2) I_n = 15{,}7\text{ A}\Rightarrow\text{CWM50}
+\]
+O K3 seria um CWM12/CWM18 pela corrente, mas esses contatores t\^em $I_{f,max}\approx 35$\,A (PIE 09, p.~110) e n\~ao aceitam o fus\'ivel de $\approx 100$\,A exigido pela coordena\c{c}\~ao; por isso usa-se CWM50 ($I_{f,max}=100$\,A). \src{PIE 09 p.113--114: ``solu\c{c}\~ao: redimensionar K3''}.
+\item \textbf{Rel\'e (lado motor, $I_{aj}=72$\,A):} $M=\dfrac{352{,}1}{72}=4{,}89$. Classe 10 $\to 8{,}7$\,s ($<t_{pm}$: desarma na partida); classe 20 $\to 13{,}9$\,s ($10<13{,}9\le 15$ $\checkmark$); classe 30 $\to 23{,}7$\,s ($>t_{rb}$: n\~ao protege o rotor). Logo, \textbf{classe 20}, a \'unica da janela.
+\item \textbf{Fus\'ivel (linha):} m\'inimo $1{,}2\cdot 65{,}69=78{,}8$\,A; m\'aximo $=\min(125;100;100)=100$\,A (K1, K2, K3). Escolhe-se \textbf{FNH00-100U}: corrigido $100\cdot 0{,}87=87{,}0\ge 78{,}8$ $\checkmark$; na partida a $282$\,A atua em $\approx 51$\,s $\ge t_{pm}$ $\checkmark$.
+\item \textbf{Equipamento extra:} autotransformador de partida (dimensionado pela pot\^encia, pelo ciclo de partidas/h e pelo TAP) e seccionadora MSW80 na entrada. O cat\'alogo do autotransformador n\~ao foi extra\'ido nesta resolu\c{c}\~ao.
+\end{enumerate}
+
+\subsection{Soft-starter (SSW06, com limita\c{c}\~ao de corrente)}
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Corrente limitada necess\'aria:} admitindo $C\propto(I/I_{pm,DOL})^2$ (aproxima\c{c}\~ao), o torque de $24$\,kgf$\cdot$m exige
+\[
+I_{lim}\ge I_{pm,DOL}\sqrt{\dfrac{C_{req}}{C_p}}=440{,}1\sqrt{\dfrac{24}{59{,}5}}=279{,}5\ \text{A}\approx 4{,}25\,I_n
+\]
+Com $I_{SSW}=85$\,A, isso equivale a $\approx 330\,\%$ da corrente nominal da SSW: verificar a faixa de ajuste no manual. A curva real do torque depende da carga (PIE 10, p.~14).
+\item \textbf{Corrente da SSW:} $I_{SSW}\ge I_n=65{,}7$\,A $\Rightarrow$ \textbf{SSW06 85\,A} (440\,V: 85\,A, 60\,cv/45\,kW) \src{cat\'alogo SSW, p.~9}.
+\item \textbf{Tempo de rotor bloqueado equivalente:} $t_{rb,SSW}=t_{rb}^{quente}\left(\dfrac{I_{pm,DOL}}{I_{lim}}\right)^2=15\cdot 1{,}575^2=37{,}2$\,s. Crit\'erio $t_{pm}\le 0{,}8\,t_{rb,SSW}$: $10\le 29{,}8$\,s $\checkmark$ \src{PIE 10 p.19, 23}.
+\item \textbf{Condutor:} dimensionado pela corrente da SSW ($I_P=85$\,A): $I_z\ge 85/0{,}71=119{,}7$\,A $\Rightarrow$ 50\,mm$^2$ ($I_z'=95{,}1$\,A). $\Delta V\%$ na partida com $I_{lim}$: $1{,}80\,\%$ (limite de $10\,\%$); em regime, $0{,}55\,\%$.
+\item \textbf{Contator a montante:} dimensionado pela corrente total da SSW \src{PIE 10 p.24--25}: CWM95-22-30-V26 ($\ge 85$\,A).
+\item \textbf{Prote\c{c}\~ao:} rel\'e de sobrecarga n\~ao \'e necess\'ario (prote\c{c}\~ao eletr\^onica integral da SSW, \src{PIE 10 p.26}); fus\'ivel \textbf{ultrarr\'apido aR} para os semicondutores, do tamanho da SSW (\'ordem de 100\,A; confirmar no cat\'alogo aR).
+\end{enumerate}
+
+\subsection{Inversor de frequ\^encia (CFW700)}
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Derating:} o processo \'e de torque constante e opera em $1200$\,rpm (f/fn $\approx 1$): $T_r=0{,}95$ (regi\~ao D) \src{PIE 10 p.79}. Conjugado de placa exigido:
+\[
+C_{nm}\ge\dfrac{C_{req}}{T_r\,F_{Temp}}=\dfrac{24}{0{,}95\cdot 0{,}92}=27{,}5\ \text{kgf$\cdot$m}
+\]
+\item \textbf{Motor:} 37\,kW / 50\,cv (225S/M, 6 polos), $C_n=30{,}4$\,kgf$\cdot$m $\ge 27{,}5$ $\checkmark$. O motor de 30\,kW ($24{,}8$) \emph{n\~ao} atende, porque $24{,}8\cdot 0{,}874=21{,}7<24$.
+\item \textbf{Corrente nominal do motor:} $I_{nm}=\dfrac{37\,000}{\sqrt{3}\cdot 380\cdot 0{,}942\cdot 0{,}85}=70{,}2$\,A (confer\^encia pelo cat\'alogo: $121\,\text{A}\cdot 220/380=70{,}0$\,A).
+\item \textbf{Inversor:} $I_{inv}\ge I_{nm}$ $\Rightarrow$ \textbf{CFW700D70P5T4DBN1} (ND, 380--480\,V, $I_n=70{,}5$\,A, motor 50\,cv). Limites: 110\,\% por 1\,min $=77{,}6$\,A; 150\,\% por 3\,s $=106$\,A. Partida com $1{,}5\,I_{nm}=105{,}3$\,A por 3\,s $\le 106$\,A $\checkmark$ \src{PIE 10 p.86; cat\'alogo CFW700 p.9}.
+\item \textbf{Condutor:} $I_P=I_{inv}=70{,}5$\,A. Verifica\c{c}\~ao de 110\,\% por 1\,min ($77{,}6$\,A): 35\,mm$^2$ d\'a $I_z'=78{,}1$\,A (passa com margem de 0,6\,\%); adota-se \textbf{50\,mm$^2$} ($I_z'=95{,}1$\,A) por margem. $\Delta V\%$ em regime $=0{,}31\,\%$.
+\item \textbf{Seccionamento e prote\c{c}\~ao:} seccionadora MSW80; fus\'ivel aR de 80\,A ($\ge I_{inv}$) \src{PIE 10 p.86--87}. N\~ao h\'a contator de for\c{c}a nem rel\'e: a prote\c{c}\~ao t\'ermica \'e do pr\'oprio inversor.
+\end{enumerate}
+
+\subsection{Partida s\'erie-paralela (dupla tens\~ao)}
+\begin{itemize}[leftmargin=1.2em]
+\item Dados do PIE 10: $I_{pm}=\tfrac{1}{4}\cdot\tfrac{I_p}{I_n}\,I_{nm}$ e torque $C=\tfrac{1}{4}C_p$; contatores $\ge I_{nm}/2$ e rel\'e $\ge I_{nm}/2$ \src{PIE 10 p.6--8}.
+\item Motor de 30\,kW: $C=\tfrac{1}{4}\cdot 59{,}5=14{,}9$\,kgf$\cdot$m $<24$ $\Rightarrow$ \textbf{n\~ao atende}.
+\item Motor de 90\,kW (dos c\'alculos do Y-D): $C=\tfrac{1}{4}\cdot 148=37$\,kgf$\cdot$m $\checkmark$, mas exige motor de dupla tens\~ao (380/760\,V) e um motor 3$\times$ maior que o necess\'ario: n\~ao \'e a solu\c{c}\~ao econ\^omica para este processo.
+\end{itemize}
+
+\section{Quadro comparativo e o que muda no c\'alculo}
+
+\subsection{Resultados lado a lado}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright}p{2.6cm}>{\raggedright}p{2.0cm}>{\raggedright}p{1.5cm}>{\raggedright}p{1.7cm}>{\raggedright}p{2.6cm}X@{}}
+\toprule
+M\'etodo & Motor & $I_n$ [A] & $I_{pm}$ linha [A] & Cabo (PVC, B1) & Contatores / rel\'e / fus\'ivel \\
+\midrule
+Y-D (Parte I, com banco) & 90 kW / 125 cv & 185,2 (166,4 com FP) & 370,4 & 3\#95(50), fase 96,05 A & K1,K2 CWM105; K3 CWM95; RWM420E (105 A, cl.10, $t_{ar}\approx 11{,}7$\,s); FNH00-160U na fase \\
+Direta & 30 kW / 40 cv & 65,7 & 440,1 & 3\#35(16) & K1 CWM80; RWM112E (72 A, cl.20, $t_{ar}\approx 12{,}3$\,s); FNH00-125U na linha \\
+Compensadora 80\,\% & 30 kW / 40 cv & 65,7 & 281,7 (linha); 352,1 (motor) & 3\#35(16) & K1 CWM80, K2 CWM50, K3 CWM50; RWM112E (72 A, cl.20, $t_{ar}\approx 13{,}9$\,s); FNH00-100U \\
+Soft-starter & 30 kW / 40 cv & 65,7 & $I_{lim}\approx 280$ & 3\#50(25), pela SSW & SSW06 85 A; CWM95 a montante; sem rel\'e; aR $\approx$100 A \\
+Inversor & 37 kW / 50 cv & 70,2 & $\le 105$ (3 s) & 3\#50(25), pelo inversor & CFW700D70P5T4DBN1; MSW80; aR 80 A; sem rel\'e \\
+S\'erie-paralela & 30 kW (n\~ao atende) / 90 kW & 65,7 / 185 & $\tfrac{1}{4}$ do DOL & -- & $C=14{,}9$ ou $37$\,kgf$\cdot$m \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Diferen\c{c}as de c\'alculo, passo a passo}
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Pot\^encia requerida e tamanho do motor.} No Y-D, o torque em $Y$ \'e $1/3$ do de $\Delta$, ent\~ao a pot\^encia de $\Delta$ precisa ser $3\times$ a de $Y$: $P_\Delta = 96{,}42$\,kW $\Rightarrow$ motor de 90\,kW. Nas demais partidas, n\~ao h\'a esse fator: $P_{req}=32{,}14$\,kW $\Rightarrow$ motor de 30\,kW. O inversor usa o fator de derating ($0{,}95\cdot 0{,}92$) e chega a 37\,kW.
+\item \textbf{Corrente de partida.} O mesmo motor de 30\,kW tem $440$\,A na partida direta, $282$\,A na compensadora 80\,\%, $\approx 280$\,A de $I_{lim}$ na soft-starter e $\le 105$\,A no inversor. O Y-D reduz para $1/3$ da corrente do pr\'oprio motor de 90\,kW ($370$\,A).
+\item \textbf{Torque de partida.} DOL: $C_p=59{,}5$; Y-D: $C_p/3$ (com $C_p=148$, d\'a $49$); compensadora: $k^2 C_p$ (TAP 50\% n\~ao serve, 80\% serve); s\'erie-paralela: $C_p/4$.
+\item \textbf{Corrente de projeto do condutor.} No Y-D o ramo $\Delta$ conduz a corrente de fase $I_n/\sqrt{3}$ (96,05\,A); nos outros m\'etodos o cabo conduz a corrente de linha $I_n$ (65,7\,A). Com banco e agrupamento de 2 circuitos ($f_2=0{,}80$) o cabo sobe para 95\,mm$^2$; sem banco ($f_2=1$), o Y-D cairia para 70\,mm$^2$ (com $I_{aj}\in[112{,}3;\,121{,}4]$\,A). Nos m\'etodos de 30\,kW o cabo \'e 35\,mm$^2$ (queda de tens\~ao e curto n\~ao o limitam).
+\item \textbf{Contatores.} DOL: um contator de $1{,}05\,I_n$. Y-D: tr\^es contatores com correntes $I_\phi$, $I_\phi$ e $I_n/3$. Compensadora: tr\^es contatores com $I_n$, $k^2I_n$ e $(k-k^2)I_n$ (pior caso de TAP). Soft-starter: contator a montante pela corrente da SSW. Inversor: sem contator de for\c{c}a.
+\item \textbf{Rel\'e de sobrecarga e classe.} A janela $t_{pm}<t_{ar}\le t_{rb}$ define a classe. Y-D (classe 10): $t_{ar}=11{,}7$\,s com $M=3{,}53$. DOL e compensadora (classe 20): $M=6{,}1$ e $4{,}9$ precisam de classe 20; a classe 10 desarmaria durante a partida ($7{,}7$ e $8{,}7$\,s). A posi\c{c}\~ao do rel\'e tamb\'em muda: no Y-D na fase $\Delta$, na DOL na linha, na compensadora no lado do motor.
+\item \textbf{Fus\'ivel.} A fase ou a linha depende da corrente que circula. No Y-D, a linha n\~ao cabe ($1{,}2\,I_L/0{,}87=229{,}5$\,A $>200$\,A dos contatores). Na DOL, o fus\'ivel precisa suportar 440\,A por $t_{pm}$: 100\,A falha e 125\,A passa. Na compensadora, o limite \'e o menor $I_{f,max}$ dos contatores (100\,A). Na soft-starter e no inversor, usa-se fus\'ivel aR, que protege semicondutor.
+\item \textbf{Queda de tens\~ao na partida.} DOL: $4{,}04\,\%$; compensadora: $2{,}6\,\%$; soft-starter: $1{,}8\,\%$; Y-D: $1{,}25\,\%$; inversor: $0{,}7\,\%$. Todos est\~ao abaixo de $10\,\%$, mas a DOL \'e a que mais se aproxima do limite e costuma exigir an\'alise do ponto de conex\~ao.
+\item \textbf{Curto-circuito.} N\~ao muda com o m\'etodo: $T=(115\,S/I_{cc})^2$ e $t_{ad}$ do fus\'ivel. Muda a bitola: $T_{35}=0{,}33$\,s, $T_{50}=0{,}67$\,s, $T_{95}=2{,}43$\,s.
+\end{enumerate}
+
+\subsection{Quando usar cada uma (resumo)}
+\begin{itemize}[leftmargin=1.2em]
+\item \textbf{Direta:} o motor parte com torque e corrente plenos; \'e a mais barata e simples, mas exige rede forte (queda de 4\,\% aqui) e rel\'e de classe 20.
+\item \textbf{Estrela-tri\^angulo:} reduz a corrente a $1/3$, mas reduz o torque tamb\'em a $1/3$; por isso o motor precisa ser $3\times$ maior em pot\^encia. Para o processo deste exerc\'icio, o motor fica caro e pesado.
+\item \textbf{Compensadora:} ajusta torque e corrente pelo TAP (80\,\% aqui). Mant\'em o motor de 30\,kW, mas tem autotransformador e mais contatores.
+\item \textbf{Soft-starter:} rampa suave, sem comuta\c{c}\~ao; a corrente limitada precisa ser ajustada com cuidado e a SSW \'e mais cara que a chave convencional.
+\item \textbf{Inversor:} controla velocidade e partida; aqui o processo \'e fixo (1200\,rpm), ent\~ao o inversor \'e mais caro que o necess\'ario, e exige motor um porte maior (37\,kW) por causa do derating.
+\item \textbf{S\'erie-paralela:} s\'o compensa com motor de dupla tens\~ao; para este processo n\~ao se justifica.
+\end{itemize}
+
+\textbf{Limita\c{c}\~oes desta compara\c{c}\~ao.} (i) A compara\c{c}\~ao usa FP natural (sem banco) nas partidas de 30\,kW; o Y-D da Parte I tem banco. (ii) As curvas do rel\'e e do fus\'ivel s\~ao digitalizadas do cat\'alogo (precis\~ao da ordem de 5\,\%). (iii) A soft-starter usa a aproxima\c{c}\~ao $C\propto I^2$; o torque real e o tempo de acelera\c{c}\~ao dependem da in\'ercia da carga, que n\~ao foi informada. (iv) Dimensionamentos de SSW, inversor, autotransformador e fus\'ivel aR devem ser confirmados nos manuais e cat\'alogos completos.
+
+\section{Observa\c{c}\~oes e limita\c{c}\~oes}
+\begin{itemize}[leftmargin=1.2em]
+\item As curvas do rel\'e RW\_E e do fus\'ivel NH foram digitalizadas a partir dos vetores do cat\'alogo (calibradas pelos eixos e pelos valores tabelados do rel\'e; precis\~ao da ordem de 5\,\%). O fator $T_a$ (0,87) foi lido no gr\'afico da p.~29. \textbf{Revis\~ao:} os valores de $t_{ar}$, $aa$ e $ab$ desta vers\~ao substituem as leituras visuais anteriores ($13$\,s, $0{,}005$\,s e $20$\,s). A conclus\~ao n\~ao muda: rel\'e ($16\ge 11{,}7>10$), fus\'ivel ($t_{ad}\le 2{,}43$\,s).
+\item O fus\'ivel de $63$\,gL/gG da unidade capacitiva (indicado no enunciado) \'e a prote\c{c}\~ao do banco, n\~ao foi solicitado nos itens a--ac, e n\~ao foi usado.
+\item A sele\c{c}\~ao dos fus\'iveis e dos contatores de $\Delta$ segue o crit\'erio das aulas (PIE 09, p.~52 e 83--87). A troca do K3 para CWM95 \'e consequ\^encia direta do limite de fus\'ivel m\'aximo.
+\item Pela curva do fus\'ivel, o FNH00-160 atende o tempo de partida em $Y$, mas a partida direta em $\Delta$ (6$\times$, sem comuta\c{c}\~ao) n\~ao \'e o regime analisado pelo m\'etodo das aulas.
+\end{itemize}
+
+\end{document}

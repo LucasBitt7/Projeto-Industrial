@@ -2,6 +2,13 @@
 
 Curso "Projetos de Instalações Elétricas Industriais" (EEL 2026-2), Recapadora de Pneus. Este arquivo resume o que um novo agente precisa para continuar; as versões anteriores (rodadas 1–6, ~200 linhas) foram condensadas aqui.
 
+
+## 0. Atualização 2026-10-16 — memorial consolidado v04
+- Novo entregável `T3/T3-Memorial de Calculo_v04.docx`: memorial do grupo (CCM1–3) + capítulo 11 CCM4 (método com FS dos colegas, FC 0,92, Ta 0,90), com capítulo 7 de figuras/equações de referência (uma vez só), cálculo completo em todas as células, lista de figuras por estilo `Legenda`, quebras de página por capítulo. 370 → 138 páginas (LibreOffice) após a padronização de formatação (corpo Arial 11; em 12 pt seriam 146). Nas cópias (P8B–D, P9B–D, P1B/C) saem só os parágrafos explicativos longos idênticos aos da 1ª célula (regra KEEP_RE: frases com "adotado/escolhido", códigos de modelo e resultados ficam); slides escalados a 11,5 cm, páginas de catálogo a 13 cm; as 4 páginas inteiras de catálogo novas do cap. 7 (W22 IV/VIII polos, fusíveis D) a 10 cm. Origem `T3-Memorial de Calculo.docx` intocada.
+- Gerador: `build_v04.py` (só no scratchpad da sessão; cópia em `scratchpad/../build_v04_backup.py`, efêmera). Regras: fusão de imagens iguais por hash + tabela MERGE manual; figura "de referência" = usada em ≥ 2 processos; equações genéricas (rótulo (N) + OMML) movidas com legenda; refs "Figura N" resolvidas pela legenda mais próxima na célula (numeração dos colegas tem erros, ex. "Figura 36").
+- Formatação padronizada (2026-10-16): pós-processador `fmt_v04.py` (estilos Corpo/Equação/Símbolos/Legenda/Imagem/Fonte, Heading 1–5 renumerados por regra — processo, célula, componente, dimensionamento —, equações numeradas com tabulação centro/direita e linhas longas do CCM4 quebradas em linhas de até ~62 caracteres, "In" matemático convertido em I com índice n para não virar "∈" no LibreOffice, sumário níveis 1–3 e lista de figuras reconstruídos com páginas do LibreOffice, rodapé com número). Pipeline: `build_v04.py PRE.docx` → `pipeline.sh PRE.docx OUT.docx` (duas passagens + `find_pages.py`). Cópias dos geradores em `scratchpad/../backup_geradores/` (efêmeras). Cabeçalhos de células ficaram "P8A: Quadro de acionamento e controle da célula" (o processo está no título pai).
+- Revisão do CCM4 aplicada (ver `T3_LEIA-ME.md`): pico simultâneo no disjuntor da célula; termo reativo na queda de partida; textos. Pendente de decisão do professor: ajuste do relé sobre PC (6–23 % acima da In). Planilha/LEIA-ME/REV seguem o método sem FS (126,9 kW; 196,5 A) — divergência de método entre documentos registrada no item 11.11.
+
 ## 1. Entregáveis (pasta `T3/`)
 | Arquivo | Papel |
 |---|---|
